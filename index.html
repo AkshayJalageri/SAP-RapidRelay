@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAP-RapidRelay</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>SAP-RapidRelay 🪄</h1>
+        </header>
+
+        <!-- View for Creating a New Incident -->
+        <main id="create-view">
+            <div class="card">
+                <h2>🚨 Report a New Critical Incident</h2>
+                <form id="create-incident-form">
+                    <input
+                        type="text"
+                        id="incident-title"
+                        placeholder="Incident Title (e.g., Payment API is down)"
+                        required
+                    />
+                    <textarea
+                        id="incident-description"
+                        placeholder="Describe the issue. Include keywords like 'database', 'auth', 'kubernetes' to help find the right expert."
+                        required
+                    ></textarea>
+                    <button type="submit">Start Relay</button>
+                </form>
+            </div>
+        </main>
+
+        <!-- View for Displaying a Single Incident -->
+        <main id="incident-view" class="hidden">
+            <div class="card incident-details">
+                <h2 id="view-title"></h2>
+                <p><strong>Description:</strong> <span id="view-description"></span></p>
+                <p class="owner">
+                    <strong>Current Baton Holder:</strong> <span id="view-owner"></span>
+                </p>
+                <p><strong>Status:</strong> <span id="view-status" class="status"></span></p>
+            </div>
+
+            <div class="card timeline">
+                <h3>Relay Timeline</h3>
+                <ul id="view-timeline-list">
+                    <!-- Timeline items will be injected here by JavaScript -->
+                </ul>
+            </div>
+
+            <div class="card pass-baton-form">
+                <h3>Pass the Baton 🤝</h3>
+                <form id="pass-baton-form">
+                    <textarea
+                        id="passing-note"
+                        placeholder="Add a note for the next person (e.g., 'Checked logs, not a DB issue.')"
+                        required
+                    ></textarea>
+                    <select id="next-owner-select" required>
+                        <!-- Expert options will be injected here by JavaScript -->
+                    </select>
+                    <button type="submit">Pass the Baton</button>
+                </form>
+                 <button id="back-to-home" class="secondary-button">Report Another Incident</button>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
